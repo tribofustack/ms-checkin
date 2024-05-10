@@ -1,3 +1,4 @@
+// Changed 
 import { SequelizeModule, SequelizeModuleOptions } from '@nestjs/sequelize';
 import { Sequelize } from 'sequelize-typescript';
 import { CustomerModel } from 'src/external/adapters/customer/sequelize/customer.model';
