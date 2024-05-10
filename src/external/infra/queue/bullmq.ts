@@ -6,10 +6,6 @@ import { env } from 'src/internal/application/configs/env';
   imports: [
     BullModule.registerQueue(
       {
-        name: 'payments',
-        defaultJobOptions: { attempts: 2 },
-      },
-      {
         name: 'orders',
         defaultJobOptions: { attempts: 2 },
       },
