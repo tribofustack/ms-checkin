@@ -20,19 +20,18 @@ describe('Customer Sequelize Repository', () => {
   describe('findOne', () => {
     it('should get customer by customerId', async () => {
       // arrange
-      const methodName = 'findOne';
-      const customerId = 'abcd-efgh-ijkl';
-      const cpf = '123456789';
+      const customerId = 'abcd-efgh-ijkl-findOne';
+      const cpf = '1234567891';
 
       await customerModel.create({
-        id: customerId + methodName,
+        id: customerId,
         name: 'Test',
-        email: 'test@test.' + methodName,
-        cpf: cpf + '1',
+        email: 'test@test.findOne',
+        cpf: cpf,
       });
 
       // act
-      const customer = await repository.findOne(customerId + methodName);
+      const customer = await repository.findOne(customerId);
 
       // assert
       expect(customer).not.toBeUndefined();
@@ -43,20 +42,19 @@ describe('Customer Sequelize Repository', () => {
   describe('findOneByCpfOrEmail', () => {
     it('should get customer by cpf or email', async () => {
       // arrange
-      const methodName = 'findOneByCpfOrEmail';
-      const customerId = 'abcd-efgh-ijkl';
-      const cpf = '123456789';
+      const customerId = 'abcd-efgh-ijkl-findOneByCpfOrEmail';
+      const cpf = '1234567892';
 
       await customerModel.create({
-        id: customerId + methodName,
+        id: customerId,
         name: 'Test',
-        email: 'test@test.' + methodName,
-        cpf: cpf + '2',
+        email: 'test@test.findOneByCpfOrEmail',
+        cpf: cpf,
       });
 
       // act
-      const customerByCpf = await repository.findOneByCpfOrEmail(cpf + '2');
-      // const customerByEmail = await repository.findOneByCpfOrEmail('test@test.' + methodName);
+      const customerByCpf = await repository.findOneByCpfOrEmail(cpf);
+      // const customerByEmail = await repository.findOneByCpfOrEmail('test@test.findOneByCpfOrEmail');
 
       // assert
       expect(customerByCpf).not.toBeUndefined();
@@ -69,19 +67,18 @@ describe('Customer Sequelize Repository', () => {
   describe('findByCpf', () => {
     it('should get customer by cpf', async () => {
       // arrange
-      const methodName = 'findByCpf';
-      const customerId = 'abcd-efgh-ijkl';
-      const cpf = '123456789';
+      const customerId = 'abcd-efgh-ijkl-findByCpf';
+      const cpf = '1234567893';
 
       await customerModel.create({
-        id: customerId + methodName,
+        id: customerId,
         name: 'Test',
-        email: 'test@test.' + methodName,
-        cpf: cpf + '3',
+        email: 'test@test.findByCpf',
+        cpf: cpf,
       });
 
       // act
-      const customer = await repository.findByCpf(cpf + '3');
+      const customer = await repository.findByCpf(cpf);
 
       // assert
       expect(customer).not.toBeUndefined();
@@ -92,15 +89,14 @@ describe('Customer Sequelize Repository', () => {
   describe('findAll', () => {
     it('should get all customers', async () => {
       // arrange
-      const methodName = 'findAll';
-      const customerId = 'abcd-efgh-ijkl';
-      const cpf = '123456789';
+      const customerId = 'abcd-efgh-ijkl-findAll';
+      const cpf = '1234567894';
 
       await customerModel.create({
-        id: customerId + methodName,
+        id: customerId,
         name: 'Test',
-        email: 'test@test.' + methodName,
-        cpf: cpf + '4',
+        email: 'test@test.findAll',
+        cpf: cpf,
       });
 
       // act
@@ -115,20 +111,19 @@ describe('Customer Sequelize Repository', () => {
   describe('create', () => {
     it('should create a customer', async () => {
       // arrange
-      const methodName = 'create';
-      const customerId = 'abcd-efgh-ijkl';
-      const cpf = '123456789';
+      const customerId = 'abcd-efgh-ijkl-create';
+      const cpf = '1234567895';
 
       let customerEntity: Customer = new Customer({
-        id: customerId + methodName,
+        id: customerId,
         name: 'Test',
-        email: 'test@test.' + methodName,
-        cpf: cpf + '5',
+        email: 'test@test.create',
+        cpf: cpf,
       });
 
       // act
       await repository.create(customerEntity);
-      const customer = await repository.findOne(customerId + methodName);
+      const customer = await repository.findOne(customerId);
 
       // assert
       expect(customer).not.toBeUndefined();
@@ -139,26 +134,25 @@ describe('Customer Sequelize Repository', () => {
   describe('update', () => {
     it('should update an customer', async () => {
       // arrange
-      const methodName = 'update';
-      const customerId = 'abcd-efgh-ijkl';
-      const cpf = '123456789';
+      const customerId = 'abcd-efgh-ijkl-update';
+      const cpf = '1234567896';
 
       await customerModel.create({
-        id: customerId + methodName,
+        id: customerId,
         name: 'Test',
-        email: 'test@test.' + methodName,
-        cpf: cpf + '6',
+        email: 'test@test.update',
+        cpf: cpf,
       });
 
 
       let customerEntity = new Customer({
-        id: customerId + methodName,
+        id: customerId,
         name: 'Test updated',
       });
 
       // act
-      await repository.update(customerId + methodName, customerEntity);
-      const customerEntityUpdated = await repository.findOne(customerId + methodName);
+      await repository.update(customerId, customerEntity);
+      const customerEntityUpdated = await repository.findOne(customerId);
 
       // assert
       expect(customerEntityUpdated).not.toBeUndefined();
@@ -170,19 +164,18 @@ describe('Customer Sequelize Repository', () => {
   describe('delete', () => {
     it('should delete an customer', async () => {
       // arrange
-      const methodName = 'delete';
-      const customerId = 'abcd-efgh-ijkl';
-      const cpf = '123456789';
+      const customerId = 'abcd-efgh-ijkl-delete';
+      const cpf = '1234567897';
 
       await customerModel.create({
-        id: customerId + methodName,
+        id: customerId,
         name: 'Test',
-        email: 'test@test.' + methodName,
-        cpf: cpf + '7',
+        email: 'test@test.delete',
+        cpf: cpf,
       });
 
       // act
-      await repository.delete(customerId + methodName);
+      await repository.delete(customerId);
       const customerEntity = await repository.findOne(customerId);
 
       // assert
