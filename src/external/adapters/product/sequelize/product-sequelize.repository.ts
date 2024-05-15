@@ -16,6 +16,19 @@ export class ProductSequelizeRepository implements IProductRepository {
     private categoryModel: typeof CategoryModel,
   ) { }
 
+  async findOrCreateCategories(
+    categoriesToCreate: categoriesToCreate,
+  ): Promise<void> {
+    Promise.all([
+      categoriesToCreate.map(async (category) =>
+        CategoryModel.findOrCreate({
+          where: { name: category.name },
+          defaults: category,
+        }),
+      ),
+    ]);
+  }
+
   async createCategories(
     categoriesToCreate: categoriesToCreate,
   ): Promise<void> {
