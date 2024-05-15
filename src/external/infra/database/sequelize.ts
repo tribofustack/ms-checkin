@@ -33,9 +33,7 @@ export const initDatabase = async () => {
 };
 
 export const closeDatabase = async (): Promise<void> => {
-  if (!sequelize) {
-    throw new DatabaseException('Sequelize connection not exists.');
-  }
+  if (!sequelize) throw new DatabaseException('Sequelize connection not exists.');
 
   await sequelize.close();
   sequelize = null;
