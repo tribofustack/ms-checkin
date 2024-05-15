@@ -1,6 +1,7 @@
+import { SequelizeModuleOptions } from '@nestjs/sequelize';
 import { env } from 'src/internal/application/configs/env';
 
-const conn = {
+const conn: SequelizeModuleOptions = {
   dialect: 'postgres',
   host: env.dbHost,
   database: env.dbName,
@@ -8,7 +9,7 @@ const conn = {
   password: env.dbPassword,
   port: env.dbPort,
   logging: false,
-  sync: { force: true },
+  // sync: { force: true },
   autoLoadModels: true,
 };
 

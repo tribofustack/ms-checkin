@@ -1,28 +1,22 @@
-// Changed 
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { CustomerModule } from './external/adapters/customer/customer.module';
 import { ProductModule } from './external/adapters/product/product.module';
-
+import { HealthController } from './external/api/health/health.controller';
 import DatabaseModule from './external/infra/database';
-import QueueModule from './external/infra/queue';
-import TokenGeneratorModule from './external/infra/tokens';
-import { Jwt } from './external/infra/tokens/jwt/jwt';
+
 @Module({
   imports: [
     CustomerModule,
     ProductModule,
-    QueueModule,
     DatabaseModule,
-    TokenGeneratorModule,
     EventEmitterModule.forRoot(),
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: ['.env.production', '.env'],
     }),
   ],
-  controllers: [],
-  providers: [Jwt, { provide: 'TokenGenerator', useExisting: Jwt }],
+  controllers: [HealthController],
 })
 export class AppModule {}
