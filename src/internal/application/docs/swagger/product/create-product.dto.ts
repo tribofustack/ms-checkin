@@ -49,6 +49,10 @@ export class CreatedProductSwagger {
     quantity: number;
 }
 
+export class CheckProductSwagger {
+    
+}
+
 export class EditProductSwagger {
     @ApiProperty({ description: 'The name of the product.' })
     name: string;
