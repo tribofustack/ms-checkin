@@ -21,7 +21,7 @@ export class Category implements ICategory {
   }
 
   private validate(category: ICategory) {
-    if (!category.id) throw new AttributeException('name not found.');
+    if (!category.id) throw new AttributeException('id not found.');
     if (!category.name) throw new AttributeException('name not found.');
     if (!category.description)
       throw new AttributeException('description not found.');
