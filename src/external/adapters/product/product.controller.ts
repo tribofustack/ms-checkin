@@ -18,7 +18,9 @@ import { GetProductCategories } from '../../../internal/application/useCases/pro
 import { UpdateProduct } from '../../../internal/application/useCases/product/update-product.usecase';
 
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { CreateProductSwagger, CreatedProductSwagger, EditProductSwagger, LoadedCategoriesSwagger, LoadedProductsByCategorySwagger } from 'src/internal/application/docs/swagger/product/create-product.dto';
+import { CheckProductSwagger, CreateProductSwagger, CreatedProductSwagger, EditProductSwagger, LoadedCategoriesSwagger, LoadedProductsByCategorySwagger } from 'src/internal/application/docs/swagger/product/create-product.dto';
+import { VerifyProductQuantity } from 'src/internal/application/useCases/product/verify-product-quantity.usecase';
+import { VerifyProductDto } from 'src/internal/domain/product/dto/verify-product.dto';
 
 @ApiTags('Products')
 @Controller('products')
@@ -28,7 +30,8 @@ export class ProductController {
     private readonly deleteProduct: DeleteProduct,
     private readonly findProductsByCategory: FindProductsByCategory,
     private readonly getProductCategories: GetProductCategories,
-    private readonly updateProduct: UpdateProduct
+    private readonly updateProduct: UpdateProduct,
+    private readonly verifyProductQuantity: VerifyProductQuantity,
   ) { }
 
   @ApiOperation({ summary: 'Create Product' })
@@ -38,6 +41,18 @@ export class ProductController {
   async create(@Body() createProductDto: CreateProductDto) {
     try {
       return await this.createProduct.execute(createProductDto);
+    } catch (err: any) {
+      return responseError(err);
+    }
+  }
+
+  @ApiOperation({ summary: 'Check Product Quantity' })
+  @ApiBody({ type: CheckProductSwagger })
+  @ApiResponse({ status: 200, description: 'Product quantity is enought.' })
+  @Post('check')
+  async checkProductQuantity(@Body() checkProductQuantityDto: VerifyProductDto[]) {
+    try {
+      return await this.verifyProductQuantity.execute(checkProductQuantityDto);
     } catch (err: any) {
       return responseError(err);
     }
