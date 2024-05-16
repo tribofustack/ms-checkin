@@ -41,8 +41,9 @@ export class ProductSequelizeRepository implements IProductRepository {
 
   async getCategories(): Promise<Category[]> {
     const categories = await this.categoryModel.findAll();
-    if (categories.length < 1)
-      throw new NotFoundException('categories not exists.');
+    
+    if (categories.length < 1) throw new NotFoundException('categories not exists.');
+    
     return categories.map(
       (c) =>
         new Category({
@@ -62,8 +63,8 @@ export class ProductSequelizeRepository implements IProductRepository {
     const productModel = await this.model.findAll({
       where: { categoryId },
     });
-    if (!productModel || productModel.length === 0)
-      throw new NotFoundException('Category without products');
+    
+    if (!productModel || productModel.length === 0) throw new NotFoundException('Category without products');
 
     return productModel.map(pm => {
       return new Product({
