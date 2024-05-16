@@ -4,10 +4,9 @@ metadata:
   name: ms-checkin-service
   namespace: orderly
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: ms-checkin
   ports:
   - protocol: TCP
     port: 3001
-    nodePort: 30000
