@@ -10,6 +10,7 @@ export class CategorySeeder implements OnModuleInit {
     @Inject('IdGenerator')
     private idGenerator: IIdentifierGenerator,
   ) {}
+  
   async onModuleInit() {
     await this.initializeApp();
   }
@@ -39,7 +40,7 @@ export class CategorySeeder implements OnModuleInit {
           description: 'Delicias saudáveis',
         },
       ];
-      await this.productRepository.createCategories(categoriesToCreate);
+      await this.productRepository.findOrCreateCategories(categoriesToCreate);
     } catch (error: any) {
       console.error(error.message);
     }

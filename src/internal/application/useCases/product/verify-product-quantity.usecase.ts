@@ -10,7 +10,6 @@ export class VerifyProductQuantity {
     constructor(
         @Inject('ProductRepository')
         private productRepository: IProductRepository,
-
         @Inject('EventEmitter')
         private eventEmitter: IEventEmitter,
     ) { }

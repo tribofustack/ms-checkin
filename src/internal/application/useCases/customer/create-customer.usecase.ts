@@ -9,7 +9,6 @@ export class CreateCustomer {
     constructor(
         @Inject('CustomerRepository')
         private customerRepository: ICustomerRepository,
-
         @Inject('IdGenerator')
         private idGenerator: IIdentifierGenerator,
     ) { }

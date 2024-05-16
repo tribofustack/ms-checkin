@@ -9,7 +9,6 @@ export class CreateProduct {
     constructor(
         @Inject('ProductRepository')
         private productRepository: IProductRepository,
-
         @Inject('IdGenerator')
         private idGenerator: IIdentifierGenerator,
     ) { }

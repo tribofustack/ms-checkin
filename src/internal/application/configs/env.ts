@@ -1,6 +1,6 @@
-// Changed 
 export const env = {
   isTest: process.env.NODE_ENV === 'test',
+  port: Number(process.env.PORT) ?? 3001,
 
   dbHost: String(process.env.DB_HOST),
   dbPort: Number(process.env.DB_PORT),
@@ -8,7 +8,4 @@ export const env = {
   dbUser: String(process.env.DB_USERNAME),
   dbPassword: String(process.env.DB_PASSWORD),
   dbDialect: String(process.env.DB_DIALECT),
-
-  cacheHost: String(process.env.CACHE_HOST),
-  cachePort: Number(process.env.CACHE_PORT),
 };
