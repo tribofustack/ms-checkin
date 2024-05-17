@@ -59,12 +59,14 @@ export class ProductSequelizeRepository implements IProductRepository {
     return quantity;
   }
 
-  async findByCategory(categoryId: string): Promise<Product[]> {
+  async findByCategory(categoryId: string): Promise<Product[] | null> {
     const productModel = await this.model.findAll({
       where: { categoryId },
     });
     
-    if (!productModel || productModel.length === 0) throw new NotFoundException('Category without products');
+    if (!productModel || !productModel.length) {
+      return null
+    }
 
     return productModel.map(pm => {
       return new Product({
