@@ -6,6 +6,19 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+        matrix:
+          node-version: [ 18, 20 ]
+    name: 'Setup Node Version ${{ matrix.node-version }}'
+    steps:
+        - uses: actions/checkout@v2
+        - uses: actions/setup-node@v4
+          with:
+            node-version: ${{ matrix.node-version }}
+        - run: npm install
+        - run: npm run test:coverage
   sonarcloud:
     name: SonarCloud
     runs-on: ubuntu-latest
