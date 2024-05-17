@@ -4,7 +4,7 @@ metadata:
   name: ms-checkin-configmap
   namespace: orderly
 data:
-  PORT: "3000"
+  PORT: "3001"
   NODE_ENV: "production"
   DB_HOST: "${DB_IP}" # db-service
   DB_USERNAME: "${DB_USERNAME}" # postgres
