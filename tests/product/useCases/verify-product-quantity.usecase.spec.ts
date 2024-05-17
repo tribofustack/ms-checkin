@@ -31,10 +31,39 @@ describe('Verify Product Quantity Use Case', () => {
         expect(findOneSpy).toBeCalledWith(productsToVerifyMock[0].id)
         expect(emitSpy).toBeCalled()        
     });
-    it('should throw NotFoundException when product not exists', async () => {        
+    it('should throw NotFoundException when product not exists', async () => { 
+        const { verifyProductQuantity, productRepository } = makeSut()
+        jest.spyOn(productRepository, "findOne").mockReturnValueOnce(null)
+                
+        const productsToVerifyMock = [{
+            id: "id-product",
+            quantity: 1,
+            price: 2
+        }]
+        
+        try {
+            await verifyProductQuantity.execute(productsToVerifyMock)
+        } catch(err) {
+            expect(err).toBeTruthy()
+            expect(err.message).toEqual('Product not found.')
+        } 
+
     });
-    it('should throw DomainException when product quantity is less than zero', async () => {        
-    });
-    it('should call eventEmitter.emit', async () => {        
+    it('should throw DomainException when product quantity is less than zero', async () => {
+        const { verifyProductQuantity, productRepository } = makeSut()
+        jest.spyOn(productRepository, "findOne")
+                
+        const productsToVerifyMock = [{
+            id: "id-product",
+            quantity: 3,
+            price: 2
+        }]
+        
+        try {
+            await verifyProductQuantity.execute(productsToVerifyMock)
+        } catch(err) {
+            expect(err).toBeTruthy()
+            expect(err.message).toEqual('Product quantity is not enough.')
+        }      
     });
 });
