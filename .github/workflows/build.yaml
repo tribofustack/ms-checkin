@@ -5,31 +5,38 @@ on:
       - main
   pull_request:
     types: [opened, synchronize, reopened]
+
 jobs:
-  tests:
+
+  build:
     runs-on: ubuntu-latest
-    strategy:
-        matrix:
-          node-version: [ 18, 20 ]
-    name: 'Setup Node Version ${{ matrix.node-version }}'
+
     steps:
-        - uses: actions/checkout@v2
-        - uses: actions/setup-node@v4
-          with:
-            node-version: ${{ matrix.node-version }}
-        - run: npm install
-        - run: npm run test:coverage
-  sonarcloud:
-    name: SonarCloud
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repo
+      - name: Checkout code
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+            node-version: '18'
+      - name: Install Dependencies
+        run: npm install
 
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
+      - name: Run tests with coverage
+        run: npm run test:coverage
+
+      - name: Run SonarQube Analysis
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          npm install -g sonar-scanner
+          sonar-scanner
+          
+      # - name: SonarCloud Scan
+      #   uses: SonarSource/sonarcloud-github-action@master
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
