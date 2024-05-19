@@ -7,8 +7,29 @@
 </p>
 
 ## 💻 Project
+Checkin Microservice
+Overview
 
-Orderly is a cutting-edge web system designed to streamline operations for restaurant and food businesses (RMS). It draws from the principles of **Domain-Driven Design (DDD)** and **Architectural Concepts** to ensure scalability, maintainability, and a robust integration capability.
+The Checkin microservice is designed to handle product and customer management. It provides backend routes to facilitate various operations related to products and customers, ensuring a streamlined and efficient check-in process.
+Key Features
+Customer Management
+
+    Create Customer: Adds a new customer to the system.
+    Get Customer by CPF: Retrieves customer details using their CPF.
+    Get Customer by ID: Fetches customer details based on their ID.
+
+Product Management
+
+    Create Product: Adds a new product to the inventory.
+    Check Product Quantity: Verifies the quantity of specified products.
+    Update Product: Updates details of an existing product.
+    Delete Product: Removes a product from the inventory.
+    Get Products by Category: Retrieves products belonging to a specific category.
+    Get Product Categories: Lists all product categories.
+
+Backend Routes
+
+- [Postman Public Collection](https://documenter.getpostman.com/view/13574011/2s9YsM8WDL)
 
 ## ✨ Quality
 
