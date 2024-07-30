@@ -12,3 +12,10 @@ data:
   DB_PASSWORD: "${DB_PASSWORD}" # postgres
   DB_NAME: "${DB_NAME}" # postgres
   DB_DIALECT: postgres
+
+  AMQP_USERNAME: admin # "${BROKER_USER}" # 
+  AMQP_PASSWORD: admin #  "${BROKER_PASSWORD}"
+  AMQP_COOKIE: "TRIBUFUSTACK"
+  AMQP_PORT: "5672"
+  AMQP_HOST: broker-service
+

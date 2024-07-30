@@ -15,7 +15,8 @@ spec:
     spec:
       containers:
       - name: ms-checkin-container
-        image: dealmachine/checkin-api:5
+        image: dealmachine/checkin-api:latest
+        imagePullPolicy: Always
         workingDir: /usr/checkin/api
         ports:
         - containerPort: 3001
