@@ -12,7 +12,7 @@ const makeSut = () => {
   };
 };
 
-describe("Verify Product Quantity Use Case", () => {
+describe("Increase Product Quantity Use Case", () => {
   it("should call productRepository.findOne with correct params", async () => {
     const { decreaseProductQuantity, productRepository } = makeSut();
     const findOneSpy = jest.spyOn(productRepository, "findOne");
