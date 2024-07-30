@@ -1,6 +1,6 @@
 export const env = {
-  isTest: process.env.NODE_ENV === "test",
-  port: Number(process.env.PORT) ?? 3001,
+  isTest: process.env.NODE_ENV === 'test',
+  port: Number(process.env.PORT) || 3001,
 
   dbHost: String(process.env.DB_HOST),
   dbPort: Number(process.env.DB_PORT),
