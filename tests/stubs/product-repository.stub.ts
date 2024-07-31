@@ -10,7 +10,7 @@ export const makeProductRepository = (): IProductRepository => {
     async findByCategory(categoryId: string): Promise<Product[] | null> {
       return Promise.resolve([
         {
-          id: "id",
+          id: "923364a4-ff86-4122-a161-6f1e2f5189e9",
           name: "name",
           description: "description",
           categoryId: categoryId,
@@ -31,7 +31,7 @@ export const makeProductRepository = (): IProductRepository => {
     async getCategories(): Promise<Category[]> {
       return Promise.resolve([
         {
-          id: "id",
+          id: "923364a4-ff86-4122-a161-6f1e2f5189e9",
           name: "Bebida",
           description: "description",
         } as Category,
