@@ -1,6 +1,4 @@
-import { NotFoundException } from "src/internal/application/errors";
 import { FindProductsByCategory } from "src/internal/application/useCases/product";
-import { Product } from "src/internal/domain/product/entities/product.entity";
 import { makeProductRepository } from "tests/stubs/product-repository.stub";
 
 const makeSut = () => {
