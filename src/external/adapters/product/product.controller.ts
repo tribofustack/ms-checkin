@@ -10,13 +10,11 @@ import {
 import { CreateProductDto } from "src/internal/domain/product/dto/create-product.dto";
 import { UpdateProductDto } from "src/internal/domain/product/dto/update-product.dto";
 import { responseError } from "src/external/infra/errors/reponse.error";
-
 import { CreateProduct } from "../../../internal/application/useCases/product/create-product.usecase";
 import { DeleteProduct } from "../../../internal/application/useCases/product/delete-product.usecase";
 import { FindProductsByCategory } from "../../../internal/application/useCases/product/find-by-category.usecase";
 import { GetProductCategories } from "../../../internal/application/useCases/product/get-categories.usecase";
 import { UpdateProduct } from "../../../internal/application/useCases/product/update-product.usecase";
-
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import {
   CheckProductSwagger,
